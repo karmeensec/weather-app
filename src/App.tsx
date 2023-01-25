@@ -17,6 +17,10 @@ function App() {
 
             <p className='flex items-center justify-center text-2xl font-medium text-blue-100 p-4'>Enter your location below <span className='ml-2 text-3xl'> <FiCornerRightDown /> </span>  </p>
 
+            <input type='text' value={''} className='px-24 py-2 my-2 bg-white opacity-10 border-solid border-2 border-blue-100 rounded-md outline-none text-blue-50 shadow-inner' />
+
+            <button className='py-2 px-10 my-4 bg-blue-50 text-xl font-medium border-solid border-2 border-blue-200 rounded-md  transition duration-150 ease-out md:ease-in hover:scale-105'>Search</button>
+
         </section>
 
     </main>
