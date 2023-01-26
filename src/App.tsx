@@ -5,6 +5,10 @@ import {FiCornerRightDown} from 'react-icons/fi'
 
 function App() {
 
+  const [name, setName] = useState('');
+
+  
+
   return (
 
     <main className='relative bg-gradient-to-b from-gray-700 via-gray-900 to-black flex justify-center items-center w-full h-[100vh]'>
