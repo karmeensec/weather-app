@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import './App.css'
 import {TiWeatherPartlySunny} from 'react-icons/ti'
 import {FiCornerRightDown} from 'react-icons/fi'
 
-function App() {
+function App(): JSX.Element {
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState<string>('');
 
-  
+  const InputFieldChange = function(e: ChangeEvent<HTMLInputElement>) {
+
+    setName(e.target.value);
+
+  }
 
   return (
 
@@ -21,7 +25,7 @@ function App() {
 
             <p className='flex items-center justify-center text-2xl font-medium text-blue-100 p-4'>Enter your location below <span className='ml-2 text-3xl'> <FiCornerRightDown /> </span>  </p>
 
-            <input type='text' value={''} className=' w-80 sm:w-48 md:w-48 lg:w-96  py-2 my-2 bg-white opacity-10 border-solid border-2 border-blue-100 rounded-md outline-none text-blue-50 shadow-inner' />
+            <input type='text' value={name} className=' w-80 sm:w-48 md:w-48 lg:w-96 py-2 my-2 bg-blue-50 text-2xl text-gray-900 border-solid border-2 border-blue-100 rounded-md outline-none text-blue-50 shadow-inner' onChange={InputFieldChange} />
 
             <button className='py-2 px-10 my-4 bg-blue-50 text-xl font-medium border-solid  border-t-[3px] border-gray-700 rounded-md  transition duration-150 ease-out md:ease-in hover:scale-105 hover:border-l-[3px] hover:border-r-[3px]' >Search</button>
 
