@@ -17,9 +17,9 @@ function App() {
 
             <p className='flex items-center justify-center text-2xl font-medium text-blue-100 p-4'>Enter your location below <span className='ml-2 text-3xl'> <FiCornerRightDown /> </span>  </p>
 
-            <input type='text' value={''} className='px-24 py-2 my-2 bg-white opacity-10 border-solid border-2 border-blue-100 rounded-md outline-none text-blue-50 shadow-inner' />
+            <input type='text' value={''} className=' sm:px-20 lg:px-28  py-2 my-2 bg-white opacity-10 border-solid border-2 border-blue-100 rounded-md outline-none text-blue-50 shadow-inner' />
 
-            <button className='py-2 px-10 my-4 bg-blue-50 text-xl font-medium border-solid border-2 border-blue-200 rounded-md  transition duration-150 ease-out md:ease-in hover:scale-105'>Search</button>
+            <button className='py-2 px-10 my-4 bg-blue-50 text-xl font-medium border-solid  border-t-[3px] border-gray-700 rounded-md  transition duration-150 ease-out md:ease-in hover:scale-105 hover:border-l-[3px] hover:border-r-[3px]' >Search</button>
 
         </section>
 
