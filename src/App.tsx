@@ -1,8 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import './App.css'
-import {TiWeatherPartlySunny} from 'react-icons/ti'
-import {FiCornerRightDown} from 'react-icons/fi'
-import { OptionTypes } from './types'
+import { ForecastTtypes, OptionTypes } from './types'
 import Weather from './Weather'
 
 const limit = 5; 
@@ -12,6 +10,7 @@ function App(): JSX.Element {
   const [name, setName] = useState<string>('');
   const [options, setOptions] = useState<[]>([]);
   const [cityData, setCityData] = useState<OptionTypes | null>(null);
+  const [forecast, setForecast] = useState<ForecastTtypes | null>(null);
 
 
 
@@ -75,7 +74,7 @@ function App(): JSX.Element {
 
     <main className='relative bg-gradient-to-b from-gray-700 via-gray-900 to-black flex justify-center items-center w-full h-[100vh]'>
         
-       <Weather name = {name} options = {options} InputFieldChange = {InputFieldChange} SubmitCity = {SubmitCity} OptionFieldSelect = {OptionFieldSelect} />
+        {forecast ? ('Forecast') :( <Weather name = {name} options = {options} InputFieldChange = {InputFieldChange} SubmitCity = {SubmitCity} OptionFieldSelect = {OptionFieldSelect} /> ) }
 
     </main>
 
