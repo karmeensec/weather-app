@@ -37,9 +37,23 @@ function App(): JSX.Element {
 
     setCityData(opt);
 
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${opt.lat}&lon=${opt.lon}&units=metric&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res => res.json()).then((data)=> console.log(data));
+  }
+
+  const getWeatherData = (opt: OptionTypes) => {
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${opt.lat}&lon=${opt.lon}&units=metric&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res => res.json()).then((data)=> console.log(data));
 
   }
+  
+
+  const SubmitCity = function() {
+
+    if (!cityData) return;
+
+    getWeatherData(cityData);
+
+  }
+
 
 
 
@@ -49,7 +63,6 @@ function App(): JSX.Element {
 
       setName(cityData.name);
       setOptions([]);
-      setName('');
 
     }
 
@@ -74,7 +87,7 @@ function App(): JSX.Element {
               <div className='flex flex-col items-center justify-center'>
                 <input type='text' value={name} className='w-80 sm:w-48 md:w-48 lg:w-96 py-2 my-2 bg-blue-50 text-2xl text-gray-900 border-solid border-2 border-blue-100 rounded-md outline-none text-blue-50 shadow-inner' onChange={InputFieldChange} />
 
-                <button className='py-2 px-10 my-4 bg-blue-50 text-xl font-medium border-solid  border-t-[3px] border-gray-700 rounded-md  transition duration-150 ease-out md:ease-in hover:scale-105 hover:border-l-[3px] hover:border-r-[3px]' >Search</button> 
+                <button className='py-2 px-10 my-4 bg-blue-50 text-xl font-medium border-solid  border-t-[3px] border-gray-700 rounded-md  transition duration-150 ease-out md:ease-in hover:scale-105 hover:border-l-[3px] hover:border-r-[3px]' onClick={SubmitCity} >Search</button> 
               </div>
 
 
