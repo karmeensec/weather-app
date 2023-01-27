@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import './App.css'
 import {TiWeatherPartlySunny} from 'react-icons/ti'
 import {FiCornerRightDown} from 'react-icons/fi'
@@ -10,6 +10,8 @@ function App(): JSX.Element {
 
   const [name, setName] = useState<string>('');
   const [options, setOptions] = useState<[]>([]);
+  const [cityData, setCityData] = useState<OptionTypes | null>(null);
+
 
 
    const getSearchNames =  function(value: string) {
@@ -33,9 +35,27 @@ function App(): JSX.Element {
 
   const OptionFieldSelect = function(opt: OptionTypes) {
 
+    setCityData(opt);
+
       fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${opt.lat}&lon=${opt.lon}&units=metric&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res => res.json()).then((data)=> console.log(data));
 
   }
+
+
+
+  useEffect( ()=> {
+
+    if (cityData) {
+
+      setName(cityData.name);
+      setOptions([]);
+      setName('');
+
+    }
+
+  },  [cityData]);
+
+
 
   return (
 
