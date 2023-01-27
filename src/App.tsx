@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from 'react'
 import './App.css'
 import {TiWeatherPartlySunny} from 'react-icons/ti'
 import {FiCornerRightDown} from 'react-icons/fi'
+import { OptionTypes } from './types'
 
 const limit = 5; 
 
@@ -30,6 +31,13 @@ function App(): JSX.Element {
 
   }
 
+  const OptionFieldSelect = function(opt: OptionTypes) {
+
+    console.log(opt.name);
+    console.log(opt.lat);
+
+  }
+
   return (
 
     <main className='relative bg-gradient-to-b from-gray-700 via-gray-900 to-black flex justify-center items-center w-full h-[100vh]'>
@@ -42,9 +50,24 @@ function App(): JSX.Element {
 
             <p className='flex items-center justify-center text-2xl font-medium text-blue-100 p-4'>Enter your location below <span className='ml-2 text-3xl'> <FiCornerRightDown /> </span>  </p>
 
-            <input type='text' value={name} className=' w-80 sm:w-48 md:w-48 lg:w-96 py-2 my-2 bg-blue-50 text-2xl text-gray-900 border-solid border-2 border-blue-100 rounded-md outline-none text-blue-50 shadow-inner' onChange={InputFieldChange} />
+            <div className='relative flex align-center justify-center flex-column'>
 
-            <button className='py-2 px-10 my-4 bg-blue-50 text-xl font-medium border-solid  border-t-[3px] border-gray-700 rounded-md  transition duration-150 ease-out md:ease-in hover:scale-105 hover:border-l-[3px] hover:border-r-[3px]' >Search</button>
+              <div className='flex flex-col items-center justify-center'>
+                <input type='text' value={name} className='w-80 sm:w-48 md:w-48 lg:w-96 py-2 my-2 bg-blue-50 text-2xl text-gray-900 border-solid border-2 border-blue-100 rounded-md outline-none text-blue-50 shadow-inner' onChange={InputFieldChange} />
+
+                <button className='py-2 px-10 my-4 bg-blue-50 text-xl font-medium border-solid  border-t-[3px] border-gray-700 rounded-md  transition duration-150 ease-out md:ease-in hover:scale-105 hover:border-l-[3px] hover:border-r-[3px]' >Search</button> 
+              </div>
+
+
+              <ul className='w-96 h-50 lg:w-96  md:w-48 min-[320px]:w-80 absolute top-14 bg-transparent backdrop-blur-2xl rounded-md'>
+                {options.map((opt: OptionTypes, i: number) => {
+                    return <li key={opt.name + '-' + i}>
+                      <button className='w-full cursor-pointer text-2xl font-medium text-blue-100 px-4 py-2 hover:bg-slate-200 hover:text-slate-800 hover:backdrop-blur-md' onClick={OptionFieldSelect}>{opt.name}</button>
+                    </li>
+                })}
+              </ul>
+
+        </div>
 
         </section>
 
