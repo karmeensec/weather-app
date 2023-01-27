@@ -8,11 +8,12 @@ const limit = 5;
 function App(): JSX.Element {
 
   const [name, setName] = useState<string>('');
+  const [options, setOptions] = useState<[]>([]);
 
 
    const getSearchNames =  function(value: string) {
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=${limit}&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res=> res.json()).then((data)=> console.log(data));
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=${limit}&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res=> res.json()).then((data)=> setOptions(data));
 
   }
 
