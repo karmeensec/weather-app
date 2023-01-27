@@ -2,8 +2,6 @@ import { ChangeEvent, useState } from 'react'
 import './App.css'
 import {TiWeatherPartlySunny} from 'react-icons/ti'
 import {FiCornerRightDown} from 'react-icons/fi'
-import dotenv from 'dotenv';
-dotenv.config();
 
 const limit = 5; 
 
@@ -11,11 +9,23 @@ function App(): JSX.Element {
 
   const [name, setName] = useState<string>('');
 
+
+   const getSearchNames =  function(value: string) {
+
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=${limit}&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res=> res.json()).then((data)=> console.log(data));
+
+  }
+
+
   const InputFieldChange = function(e: ChangeEvent<HTMLInputElement>) {
 
-    setName(e.target.value);
+    const value = e.target.value.trim();
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=${limit}&appid=${process.env.REACT_API_KEY}`);
+    setName(value);
+
+    if (value === '') return;
+
+    getSearchNames(value);
 
   }
 
