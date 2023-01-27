@@ -2,6 +2,10 @@ import { ChangeEvent, useState } from 'react'
 import './App.css'
 import {TiWeatherPartlySunny} from 'react-icons/ti'
 import {FiCornerRightDown} from 'react-icons/fi'
+import dotenv from 'dotenv';
+dotenv.config();
+
+const limit = 5; 
 
 function App(): JSX.Element {
 
@@ -10,6 +14,8 @@ function App(): JSX.Element {
   const InputFieldChange = function(e: ChangeEvent<HTMLInputElement>) {
 
     setName(e.target.value);
+
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=${limit}&appid=${process.env.REACT_API_KEY }`);
 
   }
 
