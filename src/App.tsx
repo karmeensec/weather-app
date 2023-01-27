@@ -33,8 +33,7 @@ function App(): JSX.Element {
 
   const OptionFieldSelect = function(opt: OptionTypes) {
 
-    console.log(opt.name);
-    console.log(opt.lat);
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${opt.lat}&lon=${opt.lon}&units=metric&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res => res.json()).then((data)=> console.log(data));
 
   }
 
@@ -62,12 +61,12 @@ function App(): JSX.Element {
               <ul className='w-96 h-50 lg:w-96  md:w-48 min-[320px]:w-80 absolute top-14 bg-transparent backdrop-blur-2xl rounded-md'>
                 {options.map((opt: OptionTypes, i: number) => {
                     return <li key={opt.name + '-' + i}>
-                      <button className='w-full cursor-pointer text-2xl font-medium text-blue-100 px-4 py-2 hover:bg-slate-200 hover:text-slate-800 hover:backdrop-blur-md' onClick={OptionFieldSelect}>{opt.name}</button>
+                      <button className='w-full cursor-pointer text-2xl font-medium text-blue-100 px-4 py-2 hover:bg-slate-200 hover:text-slate-800 hover:backdrop-blur-md' onClick={ ()=> OptionFieldSelect(opt) }>{opt.name}</button>
                     </li>
                 })}
               </ul>
 
-        </div>
+            </div>
 
         </section>
 
