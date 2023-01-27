@@ -15,7 +15,7 @@ function App(): JSX.Element {
 
     setName(e.target.value);
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=${limit}&appid=${process.env.REACT_API_KEY }`);
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=${limit}&appid=${process.env.REACT_API_KEY}`);
 
   }
 
