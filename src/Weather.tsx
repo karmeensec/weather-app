@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { FiCornerRightDown } from "react-icons/fi";
+import { GiLobArrow } from "react-icons/gi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { OptionTypes } from "./types/types";
 
@@ -32,7 +32,7 @@ function Weather( { name, options, InputFieldChange, SubmitCity, OptionFieldSele
 
             <h1 className='text-5xl font-bold text-blue-50 text-center my-2'>Weather <span className='font-medium text-6xl'>Forecast</span> </h1>
 
-            <p className='flex items-center justify-center text-2xl font-medium text-blue-100 p-4'>Enter your location below <span className='ml-2 text-3xl'> <FiCornerRightDown /> </span>  </p>
+            <p className='flex items-center justify-center text-2xl font-medium text-blue-100 p-4'>Enter your location below <span className='ml-2 text-3xl'> <GiLobArrow /> </span>  </p>
 
             <div className='relative flex align-center justify-center flex-column'>
 
