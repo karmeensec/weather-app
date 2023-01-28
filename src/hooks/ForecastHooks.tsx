@@ -39,7 +39,14 @@ const ForecastHooks = () => {
 
   const getWeatherData = (opt: OptionTypes) => {
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${opt.lat}&lon=${opt.lon}&units=metric&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res => res.json()).then((data)=> console.log(data));
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${opt.lat}&lon=${opt.lon}&units=metric&appid=${import.meta.env.VITE_REACT_API_KEY}`)
+    .then(res => res.json()).then((data)=> {
+
+      const forecastData = {...data.city, };
+
+      setForecast(forecastData);
+
+    });
 
   }
   
