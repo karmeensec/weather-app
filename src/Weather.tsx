@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import { FiCornerRightDown } from "react-icons/fi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import { OptionTypes } from "./types";
+import { OptionTypes } from "./types/types";
 
 
 type WeatherPropsTypes = {

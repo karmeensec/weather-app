@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { OptionTypes, ForecastTtypes } from '../types';
+import { OptionTypes, ForecastTtypes } from '../types/types';
 
 const limit = 5; 
 
@@ -14,14 +14,14 @@ const ForecastHooks = () => {
 
    const getSearchNames =  function(value: string) {
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=${limit}&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res=> res.json()).then((data)=> setOptions(data));
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=${limit}&appid=${import.meta.env.VITE_REACT_API_KEY}`).then(res=> res.json()).then((data)=> setOptions(data));
 
   }
 
 
   const InputFieldChange = function(e: ChangeEvent<HTMLInputElement>) {
 
-    const value = e.target.value.trim();
+    const value = e.target.value;
 
     setName(value);
 
@@ -42,7 +42,7 @@ const ForecastHooks = () => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${opt.lat}&lon=${opt.lon}&units=metric&appid=${import.meta.env.VITE_REACT_API_KEY}`)
     .then(res => res.json()).then((data)=> {
 
-      const forecastData = {...data.city, };
+      const forecastData = {...data.city, list: data.list.slice(0, 16) };
 
       setForecast(forecastData);
 
