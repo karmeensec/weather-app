@@ -46,7 +46,7 @@ function Weather( { name, options, InputFieldChange, SubmitCity, OptionFieldSele
               <ul className='w-96 h-50 lg:w-96  md:w-48 min-[320px]:w-80 absolute top-14 bg-transparent backdrop-blur-2xl rounded-md'>
                 {options.map((opt: OptionTypes, i: number) => {
                     return <li key={opt.name + '-' + i}>
-                      <button className='w-full cursor-pointer text-2xl font-medium text-blue-100 px-4 py-2 hover:bg-slate-200 hover:text-slate-800 hover:backdrop-blur-md' onClick={ ()=> OptionFieldSelect(opt) }>{opt.name}</button>
+                      <button className='w-full cursor-pointer text-2xl font-medium text-blue-100 px-4 py-2 hover:bg-slate-200 hover:text-slate-800 hover:backdrop-blur-md' onClick={ ()=> OptionFieldSelect(opt) }>{opt.name}, {opt.country}</button>
                     </li>
                 })}
               </ul>

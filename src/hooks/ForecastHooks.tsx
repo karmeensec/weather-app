@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { OptionTypes, ForecastTtypes } from '../types/types';
 
+
 const limit = 5; 
 
 const ForecastHooks = () => {
@@ -9,7 +10,7 @@ const ForecastHooks = () => {
   const [options, setOptions] = useState<[]>([]);
   const [cityData, setCityData] = useState<OptionTypes | null>(null);
   const [forecast, setForecast] = useState<ForecastTtypes | null>(null);
-
+  const [loading, setLoading] = useState<boolean>(false);
 
 
    const getSearchNames =  function(value: string) {
@@ -38,6 +39,7 @@ const ForecastHooks = () => {
   }
 
   const getWeatherData = (opt: OptionTypes) => {
+    setLoading(true);
 
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${opt.lat}&lon=${opt.lon}&units=metric&appid=${import.meta.env.VITE_REACT_API_KEY}`)
     .then(res => res.json()).then((data)=> {
@@ -45,7 +47,11 @@ const ForecastHooks = () => {
       const forecastData = {...data.city, list: data.list.slice(0, 16) };
 
       setForecast(forecastData);
+      setLoading(false);
 
+    }).catch((err) => { 
+      console.error(err); 
+      setLoading(true); 
     });
 
   }
@@ -76,7 +82,7 @@ const ForecastHooks = () => {
 
   return {
 
-    name, options, forecast, InputFieldChange, SubmitCity, OptionFieldSelect
+    name, options, forecast, InputFieldChange, SubmitCity, OptionFieldSelect, loading
 
   }
 
