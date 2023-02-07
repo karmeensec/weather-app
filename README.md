@@ -41,7 +41,7 @@ Also take a look to the [OpenWeatherMap API Docs](https://openweathermap.org/for
 #### Get Forecast
 
 ```http
-  api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}& appid={API key}
+   http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}& appid={API key}
 ```
 
 | Parameter | Type     | Description                |
