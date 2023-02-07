@@ -17,7 +17,7 @@ Application created with [TypeScript](https://www.typescriptlang.org/) + [ReactJ
 
 For data fetching [OpenWeatherMap API](https://react-icons.github.io/react-icons/) is used.
 
-[React Icons](https://openweathermap.org/api) applied for customization. 
+[React Icons](https://react-icons.github.io/react-icons/) applied for customization. 
 
 Learn More about [TypeScript Documentation ](https://www.typescriptlang.org/docs/) and [React Documentation ](https://beta.reactjs.org/) here.
 
